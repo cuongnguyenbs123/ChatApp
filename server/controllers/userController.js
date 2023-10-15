@@ -67,6 +67,20 @@ const findUser = async(req,res)=>{
         console.log(error);
         res.status(500).json(error);    
     }
+};
+
+
+const getUser = async(req,res)=>{
+  try{
+      let users = await userModel.find(); 
+      users = users.map((user)=>{
+        return { _id: user._id, name: user.name, email:user.email};
+      })
+      return res.status(200).json(users);
+  }catch(error){
+      console.log(error);
+      res.status(500).json(error);    
+  }
 }
 
-module.exports = { registUser,loginUser,findUser};
+module.exports = { registUser,loginUser,findUser,getUser};
