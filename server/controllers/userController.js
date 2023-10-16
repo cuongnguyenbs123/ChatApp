@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 
+
 const createToken = (_id) => {
   const jwtkey = process.env.JWT_SECRET_KEY;
 
@@ -12,9 +13,7 @@ const createToken = (_id) => {
 const registUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
     let user = await userModel.findOne({ email });
-
     if (user)
       return res.status(400).json("User with the given email already exists");
 
