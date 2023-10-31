@@ -27,11 +27,11 @@ body{
   color: white;
   position: relative;
   border-bottom: 1px solid rgb(100, 100, 100);
-  width: 380px;
+  width: 100%;
 }
 
 .user-card .text-content {
-  width: 170px;
+  width: 100%;
 }
 
 .user-card .name {
@@ -208,4 +208,59 @@ body{
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+}
+
+.mobile-chatbox{
+  display: block;
+  height: 100vh;
+  z-index:10;
+}
+
+
+.modal-body{
+  color: black;
+  background-color: rgb(40, 40, 40);
+}
+
+.modal-content{
+  border: none;
+}
+
+
+/* width
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  rgb(40, 40, 40); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+} */
+
+@media screen and (max-width: 768px) {
+
+  .messages-box{
+    height: 100vh;
+  }
+
+  .conversation{
+    display: none;
+  }
+ 
+}
+
+@media screen and (max-width: 500px) {
+  .container span{
+    font-size: 10px;
+  }
 }

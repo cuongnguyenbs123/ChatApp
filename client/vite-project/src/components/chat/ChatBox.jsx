@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ChatContext } from "../../context/ChatContext";
 import { useFetchRecipientUser } from "../../hooks/userFetchRecipient";
@@ -11,11 +11,12 @@ const ChatBox = () => {
     const { recipientUser } = useFetchRecipientUser(currentChat, user);
     const [textMessage, setTexMessage] = useState("");
 
+
     console.log(textMessage)
 
     if (!recipientUser) {
         return (
-            <p style={{ textAlign: "center", width: "100%" }}>No conversation selected yet ...</p>
+            <p className="conversation" style={{ textAlign: "center", width: "100%" }}>No conversation selected yet ...</p>
         )
     }
 
@@ -24,9 +25,15 @@ const ChatBox = () => {
             <p style={{ textAlign: "center", width: "100%" }}>Loading Chat ...</p>
         )
     }
+
+
+
     return (
-        <Stack gap={4} className="chat-box">
-            <div className="chat-header">
+        <Stack gap={4} className="chat-box w-100">
+            <div className="chat-header" style={{position: 'relative'}} >
+                <span style={{ position: 'absolute', left: '12px' }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                </svg></span>
                 <strong>{recipientUser?.name}</strong>
             </div>
             <Stack gap={3} className="messages">
@@ -38,12 +45,13 @@ const ChatBox = () => {
             <Stack direction="horizontal" gap={3} className="chat-input flex-grow-0">
                 <InputEmoji value={textMessage} onChange={setTexMessage} fontFamily="nunito" borderColor="rgba(72,112,223,0.2)" />
                 <button className="send-btn" onClick={() => {
-                    sendTextMessage(textMessage, user, currentChat._id,setTexMessage)
+                    sendTextMessage(textMessage, user, currentChat._id, setTexMessage)
                 }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-send" viewBox="0 0 16 16">
                         <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
                     </svg></button>
             </Stack>
         </Stack>
     )
+
 }
 export default ChatBox;

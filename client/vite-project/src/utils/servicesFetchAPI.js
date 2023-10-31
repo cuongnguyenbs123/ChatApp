@@ -1,4 +1,6 @@
 export const baseUrl = "http://localhost:5000/api";
+console.log(process.env)
+
 
 export const postRequest = async (url,body)=>{
     var config = {

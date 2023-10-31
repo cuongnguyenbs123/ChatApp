@@ -13,7 +13,7 @@ const UserChat = ({ chat, user }) => {
                         <div className="text">Text Messege</div>
                     </div>
                 </div>
-                <div className="d-flex flex-column align-items-end">
+                <div className="d-flex flex-column align-items-end ">
                     <div className="date">12/12/2022</div>
                     <div className="this-user-notifications">2</div>
                     <span className="user-online"></span>
