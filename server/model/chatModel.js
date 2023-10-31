@@ -9,7 +9,7 @@ mongoose.connect(url, {
 
 const chatSchema = new mongoose.Schema(
   {
-    member: Array,
+    members: Array,
   },
   { timestamps: true }
 );
