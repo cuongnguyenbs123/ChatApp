@@ -7,12 +7,9 @@ import moment from "moment";
 import InputEmoji from "react-input-emoji"
 const ChatBox = () => {
     const { user } = useContext(AuthContext);
-    const { currentChat, messages, isMessagesLoading, sendTextMessage } = useContext(ChatContext);
-    const { recipientUser } = useFetchRecipientUser(currentChat, user);
+    const { currentChat, messages, isMessagesLoading, sendTextMessage, updateCurrentChat } = useContext(ChatContext);
+    const { recipientUser,updaeRecipientUser } = useFetchRecipientUser(currentChat, user);
     const [textMessage, setTexMessage] = useState("");
-
-
-    console.log(textMessage)
 
     if (!recipientUser) {
         return (
@@ -26,12 +23,16 @@ const ChatBox = () => {
         )
     }
 
+    
 
 
     return (
         <Stack gap={4} className="chat-box w-100">
-            <div className="chat-header" style={{position: 'relative'}} >
-                <span style={{ position: 'absolute', left: '12px' }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+            <div className="chat-header cursor-pointer" type="button" style={{position: 'relative'}} >
+                <span onClick={()=>{
+                    updateCurrentChat(null);
+                    updaeRecipientUser(null);
+                }} style={{ position: 'absolute', left: '12px' }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                 </svg></span>
                 <strong>{recipientUser?.name}</strong>

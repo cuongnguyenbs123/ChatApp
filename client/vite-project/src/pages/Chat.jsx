@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import PotentialChats from "../components/chat/PotentialChat";
 import ChatBox from "../components/chat/ChatBox";
 import { useFetchRecipientUser } from "../hooks/userFetchRecipient";
+import _ from "lodash";
 
 
 const Chat = () => {
@@ -22,6 +23,10 @@ const Chat = () => {
             .matchMedia("(min-width: 768px)")
             .addEventListener('change', e => setMatches(e.matches));
     }, []);
+
+
+
+
     return (
         <>
             <Container>

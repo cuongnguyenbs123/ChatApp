@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { baseUrl, getRequest } from "../utils/servicesFetchAPI";
 
 export const useFetchRecipientUser = (chat, user) => {
@@ -22,5 +22,12 @@ export const useFetchRecipientUser = (chat, user) => {
 
     getUser();
   }, [recipientId]);
-  return { recipientUser };
+
+
+  const updaeRecipientUser = (user) => {
+    setRecipientUser(user);
+  };
+
+  
+  return { recipientUser, updaeRecipientUser };
 };
