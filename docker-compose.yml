@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+ vite_docker:
+   image: node:alpine
+   container_name: chat-app-test
+   entrypoint: /bin/sh
+   ports:
+     - 8000:8000
+   working_dir: /srv/app
+   volumes:
+     - type: bind
+       source: ./
+       target: /srv/app
+   tty: true
+
+
+## run docker: docker compose up --build --no-recreate -d
